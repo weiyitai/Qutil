@@ -61,7 +61,7 @@ public class FileUtil {
         try {
             bis = new BufferedInputStream(new FileInputStream(srcFile));
             bos = new BufferedOutputStream(new FileOutputStream(desFile));
-            byte[] bytes = new byte[2048];
+            byte[] bytes = new byte[1024 * 8];
             int len;
             while ((len = bis.read(bytes)) != -1) {
                 bos.write(bytes, 0, len);
@@ -117,7 +117,7 @@ public class FileUtil {
             return true;
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             IoUtil.closeIO(bos);
         }
         return false;
